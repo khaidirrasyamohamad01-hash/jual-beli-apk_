@@ -1,0 +1,174 @@
+/* ========= Base Style ========= */
+:root {
+  --bg: #080c14;
+  --card: rgba(255, 255, 255, 0.05);
+  --accent: #7c5cff;
+  --accent-2: #00eaff;
+  --text: #e6eef8;
+  --muted: #98a3bd;
+  --radius: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top left, #151a25, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* ========= Header ========= */
+header {
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  animation: glowText 3s ease-in-out infinite alternate;
+}
+
+/* ========= Hero Section ========= */
+.hero {
+  margin-top: 120px;
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  animation: blink 1.2s infinite, neonPulse 3s infinite;
+  color: var(--accent-2);
+  text-shadow: 0 0 10px var(--accent-2), 0 0 20px var(--accent);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+}
+
+/* ========= Button ========= */
+.btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  padding: 12px 28px;
+  color: #050b16;
+  font-weight: 700;
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(124, 92, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+}
+
+/* ========= Card Section ========= */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(124, 92, 255, 0.4);
+}
+
+.card img {
+  width: 100%;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ========= Footer ========= */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ========= Animations ========= */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow: 0 0 8px var(--accent-2), 0 0 16px var(--accent);
+  }
+  50% {
+    text-shadow: 0 0 16px var(--accent), 0 0 32px var(--accent-2);
+  }
+  100% {
+    text-shadow: 0 0 8px var(--accent-2), 0 0 16px var(--accent);
+  }
+}
+
+@keyframes glowText {
+  0% {
+    filter: drop-shadow(0 0 8px var(--accent));
+  }
+  100% {
+    filter: drop-shadow(0 0 18px var(--accent-2));
+  }
+}
+
+/* ========= Responsive ========= */
+@media (max-width: 600px) {
+  .hero h2 { font-size: 1.8rem; }
+  .cards { flex-direction: column; align-items: center; }
+  .card { width: 90%; }
+}
